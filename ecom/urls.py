@@ -7,8 +7,11 @@ from .views import HomePageView, AboutPageView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', HomePageView.as_view(), name='home'),
-    path('about', AboutPageView.as_view(), name='about'),
+    
+    path('', include('products.urls')),
+    path('cart/', include('orders.urls')),
+
+    path('about/', AboutPageView.as_view(), name='about'),
 ]
 
 if settings.DEBUG:

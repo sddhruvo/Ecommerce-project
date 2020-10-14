@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ECOM-{{ object.title }}{% endblock title %}
+
+{% block content %}
+<style>
+</style>
+<div class="ui stackable three column grid">
+    <div class="four wide column">
+        <div class="column">
+            <div class="ui segment">
+              <img class="ui image" src={{ object.image.url }}>
+            </div>
+          </div>
+    </div>
+    <div class="twelve wide column">
+        <div class="column">
+            <div class="ui segment">
+                <table class="ui celled table">
+                    <thead>
+                      <tr><th colspan="3">
+                        Product details
+                      </th>
+                    </tr></thead>
+                    <tbody>
+                      <tr>
+                        <td class="collapsing">
+                             Title
+                        </td>
+                        <td>{{ object.title }}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                             Category
+                        </td>
+                        <td>{{ object.category }}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                             Price
+                        </td>
+                        <td>{{ object.price }}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                             Status
+                        </td>
+                        <td>{{ object.status }}</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="ui tabular menu">
+  <div class="item tablinks" onclick="openTab(event, 'London')" id="defaultOpen">details</div>
+  <div class="item tablinks" onclick="openTab(event, 'Paris')">Review</div>
+</div>
+
+<div id="London" class="tabcontent">
+  <p>{{ object.description }}</p>
+</div>
+
+<div id="Paris" class="tabcontent">
+  <h3>Review and Rating</h3>
+  {% if reviews %}
+    <p>{{ reviews }}</p> 
+  {% else %}
+    <p>No review yet</p>
+  {% endif %}
+</div>
+
+<script>
+
+</script>
+{% endblock content %}

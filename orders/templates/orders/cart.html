@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ECOM-CART{% endblock title %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <div class="ui container">
+        <div>
+            <h1>Shopping Cart</h1>
+        </div>
+        <div style="margin-top: 10px;">
+            {% for item in items %}
+                <div class="ui five column grid container product">
+                    <div class="column">
+                        <img src={{item.product.image.url}} alt="product image" style="height: 100px; width: 100px;">
+                    </div>
+                    <div class="column">
+                        <h4>{{item.product.title}}({{item.product.price}})</h4>
+                    </div>
+                    <div class="column">
+                        Quantity:
+                        <div data-product={{item.product.id}} data-action='add' class="ui icon button small green basic update-cart"><i class="plus icon" style="font-family: Icons, Bangla158, sans-serif;"></i></div>
+                        &nbsp {{item.quantity}} &nbsp
+                        <div data-product={{item.product.id}} data-action='remove' class="ui icon button small red basic update-cart"><i class="minus icon" style="font-family: Icons, Bangla158, sans-serif;"></i></div>
+                    </div>
+                    <div class="column">
+                        Total: ${{item.get_total}}
+                    </div>
+                    <div class="column">
+                        <div data-product={{item.product.id}} data-action='full-remove' class="remove-btn update-cart">Remove</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="checkout">
+            <h2 style="display: inline;">Items:</h2><h2 style="display: inline;">  {{order.get_cart_item}}</h2><br>
+            <h2 style="display: inline;">Total:</h2><h2 style="display: inline;">  ${{order.get_cart_total}}</h2>
+            <div class="chekout-btn">CheckOut</div>
+        </div>
+    </div>
+{% endblock content%}

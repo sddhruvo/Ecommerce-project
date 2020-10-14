@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ECOM{% endblock title %}
+
+{% block content %}
+<div class="ui container">
+    <div class="ui stackable five column grid">
+      {% for product in object_list %}
+        <div class="column">
+            <div class="five wide column">
+                
+                <div class="column">
+                    <div class="ui">
+                        <div class="ui card">
+                            <div class="ui image">
+                              <a href="{{ product.get_absolute_url }}"><img src={{ product.image.url }} class="visible content" style="max-height: 150px;width: 100%;"></a>
+                            </div>
+                            <div class="content">
+                              <a href="{{ product.get_absolute_url }}" class="header" style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, Bangla348, sans-serif;"><h4>{{ product.title }}</h4></a>
+                              <div class="meta">
+                                <span class="date">{{ product.keywords }}</span>
+                              </div>
+                            </div>
+                            <div class="extra content">
+                              <a class="ui green header">
+                                <i class="dollar sign icon" style="font-family: Icons, Bangla348, sans-serif;"></i>
+                                {{ product.price }}
+                              </a>
+                              <div class="ui buttons">
+                                <button data-product={{product.id}} data-action="add" class="ui green button update-cart" style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, Bangla697, sans-serif;">Bye</button>
+                                <div class="or"></div>
+                                <button class="ui teal button" style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, Bangla697, sans-serif;">Wishlist</button>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock content %}

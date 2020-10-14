@@ -24,6 +24,8 @@ INSTALLED_APPS = [
 
     'profiles.apps.ProfilesConfig',
     'products.apps.ProductsConfig',
+    'orders.apps.OrdersConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -73,9 +75,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 # Auth
 AUTH_USER_MODEL = "profiles.CustomUser"
 
-ACCOUNT_FORMS = { 
-'signup': 'profiles.forms.CustomSignupForm', 
-} 
+ 
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

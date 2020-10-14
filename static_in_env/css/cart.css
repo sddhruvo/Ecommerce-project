@@ -1,0 +1,67 @@
+.product{
+    border: 1px solid black;
+    margin: 15px !important;
+}
+.column{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+}
+.chekout-btn {
+background: #53b5aa;
+border: 1px solid #999;
+border-style: none none solid none;
+cursor: pointer;
+display: block;
+color: #fff;
+font-size: 20px;
+font-weight: 300;
+padding: 16px 0;
+width: 290px;
+text-align: center;
+
+-webkit-transition: all .2s linear;
+-moz-transition: all .2s linear;
+-ms-transition: all .2s linear;
+-o-transition: all .2s linear;
+transition: all .2s linear;
+}
+
+.chekout-btn:hover {
+color: #fff;
+background: #429188;
+}
+.remove-btn {
+background: #ff7474;
+border: 1px solid #999;
+border-style: none none solid none;
+cursor: pointer;
+display: block;
+color: #fff;
+font-size: 20px;
+font-weight: 300;
+padding: 16px 0;
+width: 290px;
+text-align: center;
+
+-webkit-transition: all .2s linear;
+-moz-transition: all .2s linear;
+-ms-transition: all .2s linear;
+-o-transition: all .2s linear;
+transition: all .2s linear;
+}
+
+.remove-btn:hover {
+color: #fff;
+background: #914242;
+}
+.checkout{
+float: right;
+padding: 60px;
+display: flex !important;
+display: inline-block !important;
+}
+.quantity div {
+    padding-right: 4px !important;
+}
