@@ -1,11 +1,11 @@
 import uuid
 from django.db import models
 from django.urls import reverse
-
+from django.db.models import Avg, Count, Sum
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from profiles.models import Profile
+from profiles.models import Profile #local import
 
 
 class Category(MPTTModel):
@@ -61,9 +61,17 @@ class Product(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.title   
 
+    @property
+    def get_total_review(self):
+        total_review = self.review_set.count()
+        return total_review
 
+    @property
+    def get_total_rating(self):
+        total_rating = self.review_set.annotate(total_rating=Sum('rating')).aggregate(Avg('total_rating'))
+        return total_rating['total_rating__avg']
     
 
     def get_absolute_url(self):
@@ -72,11 +80,11 @@ class Product(models.Model):
 
 class Review(models.Model):
     Rating_CHOICES = (
-    (1, 'Poor'),
-    (2, 'Average'),
-    (3, 'Good'),
-    (4, 'Very Good'),
-    (5, 'Excellent')
+    (1, 'Poor(1)'),
+    (2, 'Average(2)'),
+    (3, 'Good(3)'),
+    (4, 'Very Good(4)'),
+    (5, 'Excellent(5)')
     )
 
     title = models.CharField(max_length=50)
@@ -87,5 +95,7 @@ class Review(models.Model):
 
     def __str__(self):
         return self.title
+
+    
     
 

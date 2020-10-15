@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="ui container">
-    <div class="ui stackable five column grid">
+    <div class="ui five column doubling stackable grid container">
       {% for product in object_list %}
         <div class="column">
             <div class="five wide column">
@@ -23,9 +23,11 @@
                               </div>
                             </div>
                             <div class="extra content">
-                              <a class="ui green header">
-                                <i class="dollar sign icon" style="font-family: Icons, Bangla348, sans-serif;"></i>
-                                {{ product.price }}
+                              <a class="ui green header" style="display: flex; size: 2rem !important;">
+                                <i class="dollar sign icon" style="font-family: Icons, Bangla348, sans-serif; display: inline-block;"></i>
+                                <p>{{ product.price }}</p>
+                                <i class="star icon yellow" style="font-family: Icons, Bangla541, sans-serif;display: inline-block;"></i>
+                                <p style="color: rgb(235, 202, 20);">{{ product.get_total_rating }}({{ product.get_total_review }})</p>
                               </a>
                               <div class="ui buttons">
                                 <button data-product={{product.id}} data-action="add" class="ui green button update-cart" style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, Bangla697, sans-serif;">Bye</button>

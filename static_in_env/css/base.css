@@ -110,3 +110,35 @@ input::-webkit-input-placeholder {
   from {opacity: 0;}
   to {opacity: 1;}
 }
+
+/* Navigation bar */
+.navbar a {
+	color: #000;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 0.15em;
+	
+	display: inline-block;
+	padding: 15px 20px;
+	position: relative;
+  }
+  .navbar a:after {    
+	background: none repeat scroll 0 0 transparent !important;
+	bottom: 0 !important;
+	content: "" !important;
+	display: block !important;
+	height: 2px !important;
+	left: 50% !important;
+	position: absolute !important;
+	background: #000 !important;
+	transition: width 0.3s ease 0s, left 0.3s ease 0s !important;
+	width: 0 !important;
+  }
+  .navbar a:hover:after { 
+	width: 100% !important; 
+	left: 0 !important; 
+  }
+.ui.secondary.menu .link.item:hover, .ui.secondary.menu a.item:hover {
+    background: #fff !important;
+    color: rgba(0,0,0,.95);
+}

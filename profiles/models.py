@@ -52,6 +52,11 @@ class Profile(models.Model):
         self.slug = slugify(self.user.username)
         super().save(*args, **kwargs)
 
+    def get_full_name(self):
+        if self.first_name:
+            return f'{self.first_name} {self.last_name}'
+        else:
+            return self.user.username
 
 # signal to create profile for user created
 @receiver(post_save, sender=User)
