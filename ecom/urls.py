@@ -10,6 +10,7 @@ urlpatterns = [
     
     path('', include('products.urls')),
     path('cart/', include('orders.urls')),
+    path('profile/', include('profiles.urls')),
 
     path('about/', AboutPageView.as_view(), name='about'),
 ]

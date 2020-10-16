@@ -24,7 +24,7 @@
           <div class="dropdown-menu">
             <div class="item menu-btn">{{ user.username }}<i class="dropdown icon"></i></div>
             <div class="menu-content ">
-              <a class="links" href="#">Profile</a>
+              <a class="links" href="{% url 'profiles:profile_detail' user.username %}">Profile</a>
               <a class="links" href="{% url 'account_change_password' %}">Change password</a>
               <a class="links" href="{% url 'account_logout' %}">logout</a>
             </div>

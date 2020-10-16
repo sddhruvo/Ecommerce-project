@@ -45,7 +45,7 @@ class ReviewAdmin(admin.TabularInline):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title','category', 'status']
+    list_display = ['title','category', 'status', 'stock']
     list_filter = ['category']
     inlines = [ReviewAdmin,]
     prepopulated_fields = {'slug': ('title',)}

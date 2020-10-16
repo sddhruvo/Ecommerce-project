@@ -5,7 +5,7 @@ from django.db.models import Avg, Count, Sum
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from profiles.models import Profile #local import
+from profiles.models import Profile 
 
 
 class Category(MPTTModel):
@@ -54,7 +54,7 @@ class Product(models.Model):
     description = models.TextField(max_length=255)
     image=models.ImageField(upload_to='product_images/', null=True, default='default-book.jpg')
     price = models.DecimalField(max_digits=12, decimal_places=2,default=0)
-    amount=models.IntegerField(default=0)
+    stock =models.PositiveIntegerField(default=0)
     slug = models.SlugField(null=False, unique=True)
     status=models.CharField(max_length=10,choices=STATUS)
     created_at=models.DateTimeField(auto_now_add=True)
