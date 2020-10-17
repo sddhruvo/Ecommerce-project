@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+  <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 {% endblock %}
 <script type="text/javascript">
   var user = '{{ request.user }}'
@@ -35,6 +36,14 @@
     return cookieValue;
   }
 const csrftoken = getCookie('csrftoken');
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
 </script>
 </head>
 
@@ -45,6 +54,15 @@ const csrftoken = getCookie('csrftoken');
   </main>
 
   <div class="ui container">
+    {% if messages %}
+    <div class="ui message">
+      <i class="close icon" style="font-family: Icons, Bangla226, sans-serif;"></i>
+      <div class="header" style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, Bangla226, sans-serif;">
+        Welcome back!
+      </div>
+    </div>
+    {% endif %}
+
     {% block content %}
       <p>Default content...</p>
     {% endblock content %}

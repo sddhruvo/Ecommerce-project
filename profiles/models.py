@@ -72,16 +72,25 @@ class Wallet(models.Model):
         return f"{self.user.slug}-B:{self.balance}"
 
 class BoughtProduct(models.Model):
-    from products.models import Product # Product imported here to avoid cyclic import error
+    from products.models import Category # Product imported here to avoid cyclic import error
 
     user = models.ForeignKey(Profile, on_delete = models.CASCADE, related_name='bought_product', null=True)
-    product = models.ForeignKey(Product, on_delete = models.CASCADE, null=True)
     quantity = models.IntegerField(default=0)
     price = models.DecimalField(max_digits=12, decimal_places=2,default=0)
     active_for_resell = models.BooleanField(default=False)
 
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True) #many to one relation with Category
+    title = models.CharField(max_length=150)
+    keywords = models.CharField(max_length=255)
+    description = models.TextField(max_length=255)
+    image=models.ImageField(upload_to='product_images/', null=True, default='default-book.jpg')
+    
+    slug = models.SlugField(null=False, unique=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+
     def __str__(self):
-        return f"Owner:{self.user.user.username}-pro:{self.product.title}"
+        return f"Owner:{self.user.user.username}-pro:{self.title}"
 
 
 # signal to create profile for user created

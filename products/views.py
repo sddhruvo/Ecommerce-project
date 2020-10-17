@@ -14,6 +14,14 @@ class ProductList(ListView):
     model = Product
     ordering = '-created_at'
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.filter(status='True', stock__gt=0)
+        print(qs)
+        return qs
+
+
+
 class ProductDetail(DetailView):
     model = Product
     pk_url_kwarg = 'id'
@@ -54,8 +62,8 @@ class ProductReview(LoginRequiredMixin, SingleObjectMixin, FormView):
 
 class ProfileDetailReview(View):
     """
-    If request contain get then return ProductDetail view
-    if request contains post method then return return ProductReview method
+    for GET request return ProductDetail view and
+    for POST request return return ProductReview method
     """
     def get(self, request, *args, **kwargs):
         view = ProductDetail.as_view()

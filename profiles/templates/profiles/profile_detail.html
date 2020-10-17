@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div class="ui three column grid">
+<div class="ui three column stackable grid">
     <div class="six wide column">
         <table class="ui celled red basic table">
             <thead>
@@ -44,6 +44,45 @@
               
             </tbody>
         </table>
+    </div>
+    <div class="ui ten wide column">
+      <div class="ui two column doubling stackable grid container">
+        {% for product in products%}
+          <div class="column">
+            <div class="five wide column">
+                
+                <div class="column">
+                    <div class="ui">
+                        <div class="ui card">
+                            <div class="ui image">
+                              <a href="{{ product.get_absolute_url }}"><img src={{ product.image.url }} class="visible content" style="max-height: 150px;width: 100%;"></a>
+                            </div>
+                            <div class="content">
+                              <a href="{{ product.get_absolute_url }}" class="header" style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, Bangla348, sans-serif;"><h4 style="word-wrap: break-word;">{{ product.title }}</h4></a>
+                              <div class="meta">
+                                <span class="date">{{ product.keywords }}</span>
+                              </div>
+                            </div>
+                            <div class="extra content">
+                              <a class="ui green header" style="display: flex; size: 2rem !important;">
+                                <i class="dollar sign icon" style="font-family: Icons, Bangla348, sans-serif; display: inline-block;"></i>
+                                <p>{{ product.price }}</p>
+                                <i class="star icon yellow" style="font-family: Icons, Bangla541, sans-serif;display: inline-block;"></i>
+                                <p style="color: rgb(235, 202, 20);">{{ product.get_total_rating }}({{ product.get_total_review }})</p>
+                              </a>
+                              <div class="ui buttons">
+                                <button data-product={{product.id}} data-action="add" class="ui green button update-cart" style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, Bangla697, sans-serif;">Bye</button>
+                                <div class="or"></div>
+                                <button class="ui teal button" style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, Bangla697, sans-serif;">Wishlist</button>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
 </div>
 {% endblock content %}

@@ -16,6 +16,12 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     slug_field = "slug"
     slug_url_kwarg = "slug"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object'] = self.object
+        context ['products'] = self.object.bought_product.all()
+        return context
+
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
